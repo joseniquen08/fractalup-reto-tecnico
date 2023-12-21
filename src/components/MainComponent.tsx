@@ -48,7 +48,7 @@ export function MainComponent() {
   useEffect(() => {
     const getImages = async () => {
       if(!loading && !error && data?.countries) {
-        const dataCountries = data?.countries.slice(0, 9);
+        const dataCountries = data?.countries.slice(0, 3);
         const countriesRes = await Promise.all(dataCountries.map(async country => {
           const dataRes = await fetch(
             `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_API_KEY}&q=${encodeURIComponent(`${country.name} landscape`)}&per_page=3`,
