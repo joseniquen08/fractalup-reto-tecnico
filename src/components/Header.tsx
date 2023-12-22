@@ -49,7 +49,7 @@ export function Header({ setLetters, continents, setContinents }: Props) {
   }
 
   return (
-    <header className="py-4 px-6 sticky z-50 top-0 bg-white">
+    <header className="py-4 px-2 sm:px-6 sticky z-50 top-0 bg-white">
       <div className="border rounded-full h-14 relative">
         <Label
           className="absolute top-1.5 left-6 text-md"
@@ -64,7 +64,7 @@ export function Header({ setLetters, continents, setContinents }: Props) {
           onClickCapture={handleOpenCapture}
           onKeyUp={searchCountry}
         />
-        <Button className="rounded-full absolute right-3 top-2.5 bg-sky-500">
+        <Button className="rounded-full hidden xs:flex absolute right-3 top-2.5 bg-sky-500 hover:bg-sky-600">
           <Search className="mr-2 h-4 w-4" /> Buscar
         </Button>
       </div>
@@ -72,33 +72,42 @@ export function Header({ setLetters, continents, setContinents }: Props) {
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="h-0 p-0 border-0"></Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="start" onInteractOutside={onInteractOutside} onCloseAutoFocus={onCloseAutoFocus} className="-translate-y-2 rounded-3xl py-3">
-          <div className="flex justify-between px-3">
-            <DropdownMenuLabel className="text-md font-medium">Filtrar por continentes</DropdownMenuLabel>
-            <Button variant="link" className="text-md">Limpiar</Button>
+        <DropdownMenuContent align="start" onInteractOutside={onInteractOutside} onCloseAutoFocus={onCloseAutoFocus} className="-translate-y-2 rounded-3xl py-2 xs:py-3">
+          <div className="flex flex-col space-y-1.5 2xs:flex-row 2xs:justify-between px-2 2xs:px-3">
+            <DropdownMenuLabel className="text-sm xs:text-md font-medium py-0">Filtrar por continentes</DropdownMenuLabel>
+            <Button variant="link" onClick={() => setContinents([])} className="text-sm xs:text-md h-auto py-0">Limpiar</Button>
           </div>
-          <ToggleGroup value={continents} onValueChange={onValueChange} type="multiple" className="grid grid-cols-3 gap-x-4 px-5 py-3">
-            <ToggleGroupItem value="EU" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
-              <div className="h-24 w-36 bg-red-700"></div>
-            </ToggleGroupItem>
-            <ToggleGroupItem value="AM" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
-              <div className="h-24 w-36 bg-red-700"></div>
-            </ToggleGroupItem>
-            <ToggleGroupItem value="AS" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
-              <div className="h-24 w-36 bg-red-700"></div>
-            </ToggleGroupItem>
-            <p className="text-base font-normal mb-1.5">Europa</p>
-            <p className="text-base font-normal mb-1.5">América</p>
-            <p className="text-base font-normal mb-1.5">Asia</p>
-            <ToggleGroupItem value="OC" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
-              <div className="h-24 w-36 bg-red-700"></div>
-            </ToggleGroupItem>
-            <ToggleGroupItem value="AF" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
-              <div className="h-24 w-36 bg-red-700"></div>
-            </ToggleGroupItem>
-            <div></div>
-            <p className="text-base font-normal mb-1.5">Oceanía</p>
-            <p className="text-base font-normal mb-1.5">África</p>
+          <ToggleGroup value={continents} onValueChange={onValueChange} type="multiple" className="grid 2xs:grid-cols-2 sm:grid-cols-3 gap-x-4 px-5 py-3 text-stone-600">
+            <div>
+              <ToggleGroupItem value="EU" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
+                <div className="h-24 w-36 bg-red-700"></div>
+              </ToggleGroupItem>
+              <p className="text-base font-normal">Europa</p>
+            </div>
+            <div>
+              <ToggleGroupItem value="AM" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
+                <div className="h-24 w-36 bg-red-700"></div>
+              </ToggleGroupItem>
+              <p className="text-base font-normal">América</p>
+            </div>
+            <div>
+              <ToggleGroupItem value="AS" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
+                <div className="h-24 w-36 bg-red-700"></div>
+              </ToggleGroupItem>
+              <p className="text-base font-normal">Asia</p>
+            </div>
+            <div>
+              <ToggleGroupItem value="OC" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
+                <div className="h-24 w-36 bg-red-700"></div>
+              </ToggleGroupItem>
+              <p className="text-base font-normal">Oceanía</p>
+            </div>
+            <div>
+              <ToggleGroupItem value="AF" className="flex flex-col gap-1.5 items-start border-2 border-transparent rounded-xl overflow-hidden px-0 h-auto data-[state=on]:border-blue-500 data-[state=on]:ring data-[state=on]:ring-blue-500/50">
+                <div className="h-24 w-36 bg-red-700"></div>
+              </ToggleGroupItem>
+              <p className="text-base font-normal">África</p>
+            </div>
           </ToggleGroup>
         </DropdownMenuContent>
       </DropdownMenu>

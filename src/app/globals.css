@@ -74,6 +74,20 @@
   body {
     @apply bg-background text-foreground;
     grid-template-areas: "aside content";
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 0px 1fr;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      grid-template-areas: "aside content";
+      grid-template-columns: 240px 1fr;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    body {
+      grid-template-areas: "aside content";
+      grid-template-columns: 320px 1fr;
+    }
   }
 }

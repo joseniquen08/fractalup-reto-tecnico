@@ -24,11 +24,11 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="[grid-area:aside] border-r p-5 flex flex-col space-y-4">
+    <aside className="[grid-area:aside] hidden md:flex border-r p-5 flex-col space-y-4">
       <div className="border py-3 flex justify-center">
         <h2>Logo</h2>
       </div>
-      <nav className="flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1">
+      <nav className="flex flex-col pace-y-1">
         {
           links.map((link) => (
             <Link

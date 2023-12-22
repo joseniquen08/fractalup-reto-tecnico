@@ -8,6 +8,14 @@ export interface ICountry {
   countries: {
     name: string;
     code: string;
+    capital: string;
+    languages: {
+      name: string;
+    }[];
+    currencies: string[];
+    subdivisions: {
+      name: string;
+    }[];
     continent: {
       name: string;
     }
@@ -21,6 +29,14 @@ const query: TypedDocumentNode<ICountry> = gql`
     countries(filter: $filter) {
       name
       code
+      capital
+      languages {
+        name
+      }
+      currencies
+      subdivisions {
+        name
+      }
       continent {
         name
       }
@@ -48,7 +64,7 @@ export function MainComponent() {
   useEffect(() => {
     const getImages = async () => {
       if(!loading && !error && data?.countries) {
-        const dataCountries = data?.countries.slice(0, 3);
+        const dataCountries = data?.countries.slice(0, 9);
         const countriesRes = await Promise.all(dataCountries.map(async country => {
           const dataRes = await fetch(
             `https://pixabay.com/api/?key=${process.env.NEXT_PUBLIC_PIXABAY_API_KEY}&q=${encodeURIComponent(`${country.name} landscape`)}&per_page=3`,

@@ -25,7 +25,7 @@ export default function RootLayout({
         )}
       >
         <Sidebar />
-        <main className="[grid-area:content] px-4 overflow-y-auto h-screen">
+        <main className="[grid-area:content] sm:px-4 overflow-y-auto h-screen">
           {children}
         </main>
       </body>
